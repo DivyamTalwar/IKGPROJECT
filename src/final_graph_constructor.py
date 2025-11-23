@@ -2,9 +2,9 @@ from neo4j import GraphDatabase
 import json
 import os
 
-NEO4J_URI = "neo4j+s://9d1a9c1e.databases.neo4j.io"
-NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "tOcmGKJfmOAknCqy9Dd1yIFKUI4V_Suj_6slLFolWR4"
+NEO4J_URI = os.getenv("NEO4J_URI", "neo4j+s://your-instance.databases.neo4j.io")
+NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "")  # NEVER hardcode passwords!
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 JSON_FILE = os.path.join(SCRIPT_DIR, "phase2_extraction_COMPLETE_50_triples.json")
