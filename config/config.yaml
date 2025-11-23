@@ -1,0 +1,87 @@
+ner:
+  model: "en_core_web_lg"
+  entity_types:
+    - PERSON
+    - ORGANIZATION
+    - LOCATION
+    - DATE
+    - PRODUCT
+    - EVENT
+    - MONEY
+    - PERCENT
+    - GPE
+    - ORG
+  batch_size: 32
+  confidence_threshold: 0.7
+  enable_custom_entities: false
+
+relation_extraction:
+  use_dependency_parsing: true
+  use_pattern_matching: true
+  max_entity_distance: 10 
+  confidence_threshold: 0.6
+  min_confidence: 0.5
+  context_window: 5 
+
+triple_formation:
+  enable_deduplication: true
+  enable_normalization: true
+  confidence_threshold: 0.5
+  remove_self_loops: true
+  entity_suffixes_to_remove:
+    - "Inc."
+    - "LLC"
+    - "Corp."
+    - "Ltd."
+    - "Co."
+
+graph_db:
+  type: "neo4j" 
+  neo4j:
+    uri: "bolt://localhost:7687"
+    user: "neo4j"
+    password: "password"
+    database: "kg_database"
+    batch_size: 1000
+  networkx:
+    directed: true
+    multigraph: true
+
+# Analysis Settings
+analysis:
+  compute_centrality: true
+  detect_communities: true
+  community_algorithm: "louvain"  # Options: "louvain", "label_propagation"
+  top_nodes: 20
+  min_component_size: 3
+
+# Visualization Settings
+visualization:
+  default_layout: "spring"  # Options: "spring", "circular", "kamada_kawai"
+  figure_size: [20, 16]
+  dpi: 300
+  interactive: true
+  node_colors:
+    PERSON: "#FF6B6B"
+    ORGANIZATION: "#4ECDC4"
+    LOCATION: "#45B7D1"
+    PRODUCT: "#FFA07A"
+    EVENT: "#95E1D3"
+    DATE: "#F38181"
+    DEFAULT: "#CCCCCC"
+  edge_alpha: 0.6
+  min_node_size: 100
+  max_node_size: 1000
+
+logging:
+  level: "INFO"
+  file: "kg_construction.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  console_output: true
+
+# Performance Settings
+performance:
+  use_gpu: false
+  n_process: 4
+  cache_results: true
+  cache_dir: "./cache"

@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Logs
+*.log
+logs/
+kg_construction.log
+
+# Data
+*.csv
+*.json
+!data/sample_input.txt
+!data/*.json
+
+# Outputs
+output/
+*.png
+*.pdf
+*.svg
+*.html
+!notebooks/*.html
+
+# Neo4j
+.neo4j/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache
+cache/
+.cache/
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
